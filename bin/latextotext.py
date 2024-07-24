@@ -81,9 +81,10 @@ text_new = text_all
 if remove_comments:
     # done first, to prevent accidentally replacing commented Latex code later
     text_new = re.sub('%.*\n','',text_new)
+    # text_new = re.sub(r'%.*(\n)?',func_repl,text_new)
 
-# Replace LaTeX newlines r'\\', including the optional argument, e.g. r'\\[-0.2cm]'.
-text_new = re.sub(r'\\\\(\[.*\])?',func_repl,text_new)
+# Replace LaTeX newlines with optional argument, e.g. r'\\[-0.2cm]'.
+# text_new = re.sub(r'\\\\\[.*\]',func_repl,text_new)
 # Done here to avoid a bug below when replacing r'\[ ... \]'.
 
 
