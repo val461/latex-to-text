@@ -132,10 +132,9 @@ text_new = re.sub(r'\\[a-zA-Z]+',func_repl,text_new, flags=re.MULTILINE|re.DOTAL
 
 ### PART 6 - Save space on tags and whitespace
 
-# tag consecutive whitespace units
-# n = len(tag + str(max key in dict) + tag)
-# r'\s{' + str(n) + ',}'
-# text_new = re.sub(r'\\[a-zA-Z]+',func_repl,text_new, flags=re.MULTILINE|re.DOTALL)
+# replace n consecutive whitespace characters with a tag
+n = 1 + len(tag + str(count) + tag)
+text_new = re.sub(r'\s{' + str(n) + ',}',func_repl,text_new, flags=re.MULTILINE|re.DOTALL)
 
 # replace consecutive tags with one tag (even if separated by whitespace)
 regexp = '(' + tag + r'\d+' + tag + r'\s*)+'
