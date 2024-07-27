@@ -130,6 +130,16 @@ for cmd in list_cmd_arg_discard + list_cmd_arg_discard_perso:
 text_new = re.sub(r'\\[a-zA-Z]+',func_repl,text_new, flags=re.MULTILINE|re.DOTALL)
 
 
+### PART 6 - Save space on tags and whitespace
+
+# tag consecutive whitespace units
+# n = len(tag + str(max key in dict) + tag)
+# r'\s{' + str(n) + ',}'
+# text_new = re.sub(r'\\[a-zA-Z]+',func_repl,text_new, flags=re.MULTILINE|re.DOTALL)
+
+# replace consecutive tags with one tag (even if separated by whitespace)
+regexp = '(' + tag + r'\d+' + tag + r'\s*)+'
+text_new = re.sub(regexp,func_repl,text_new)
 
 
 # Output: text file
